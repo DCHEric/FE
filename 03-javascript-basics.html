@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JavaScript 基础知识</title>
+    <style>
+        body {
+            font-family: Arial, "Microsoft YaHei", sans-serif;
+            line-height: 1.6;
+            margin: 20px;
+            background-color: #f5f5f5;
+        }
+        .section {
+            background-color: white;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        h1 { color: #2c3e50; text-align: center; }
+        h2 { color: #3498db; border-bottom: 2px solid #3498db; padding-bottom: 5px; }
+        code {
+            background-color: #ecf0f1;
+            padding: 2px 6px;
+            border-radius: 3px;
+            font-family: 'Courier New', monospace;
+        }
+        .output {
+            background-color: #2c3e50;
+            color: #2ecc71;
+            padding: 15px;
+            border-radius: 5px;
+            font-family: 'Courier New', monospace;
+            margin: 10px 0;
+        }
+        button {
+            background-color: #3498db;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #2980b9;
+        }
+        input, select {
+            padding: 8px;
+            margin: 5px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+        }
+        .demo-box {
+            border: 2px solid #3498db;
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 5px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>JavaScript 基础知识完整教程</h1>
+    <p style="text-align: center; color: #7f8c8d;">
+        JavaScript 让网页具有交互性和动态功能。打开浏览器的<strong>开发者工具(F12) → Console</strong>查看输出！
+    </p>
+
+    <!-- ========== 1. 变量和数据类型 ========== -->
+    <div class="section">
+        <h2>1. 变量和数据类型</h2>
+        <p>JavaScript 是动态类型语言，变量可以存储任何类型的值。</p>
+        <div class="output" id="output1"></div>
+        <button onclick="runVariablesDemo()">运行示例</button>
+    </div>
+
+    <!-- ========== 2. 运算符 ========== -->
+    <div class="section">
+        <h2>2. 运算符</h2>
+        <div class="demo-box">
+            <input type="number" id="num1" value="10" placeholder="数字1">
+            <input type="number" id="num2" value="5" placeholder="数字2">
+            <button onclick="calculate()">计算</button>
+            <div class="output" id="output2"></div>
+        </div>
+    </div>
+
+    <!-- ========== 3. 条件语句 ========== -->
+    <div class="section">
+        <h2>3. 条件语句 if/else</h2>
+        <div class="demo-box">
+            <input type="number" id="age" placeholder="输入年龄">
+            <button onclick="checkAge()">检查年龄</button>
+            <div class="output" id="output3"></div>
+        </div>
+    </div>
+
+    <!-- ========== 4. 循环 ========== -->
+    <div class="section">
+        <h2>4. 循环语句</h2>
+        <button onclick="runLoopDemo()">运行循环示例</button>
+        <div class="output" id="output4"></div>
+    </div>
+
+    <!-- ========== 5. 数组 ========== -->
+    <div class="section">
+        <h2>5. 数组 Array</h2>
+        <p>数组用于存储多个值的有序集合。</p>
+        <button onclick="runArrayDemo()">运行数组示例</button>
+        <div class="output" id="output5"></div>
+    </div>
+
+    <!-- ========== 6. 对象 ========== -->
+    <div class="section">
+        <h2>6. 对象 Object</h2>
+        <p>对象用于存储键值对，描述事物的属性和方法。</p>
+        <button onclick="runObjectDemo()">运行对象示例</button>
+        <div class="output" id="output6"></div>
+    </div>
+
+    <!-- ========== 7. 函数 ========== -->
+    <div class="section">
+        <h2>7. 函数 Function</h2>
+        <p>函数是可重用的代码块。</p>
+        <div class="demo-box">
+            <input type="text" id="username" placeholder="输入姓名">
+            <button onclick="greetUser()">问候</button>
+            <div class="output" id="output7"></div>
+        </div>
+    </div>
+
+    <!-- ========== 8. DOM 操作 ========== -->
+    <div class="section">
+        <h2>8. DOM 操作（操作网页元素）</h2>
+        <p>DOM (Document Object Model) 允许 JavaScript 操作 HTML 元素。</p>
+        <div class="demo-box">
+            <div id="box" style="width: 200px; height: 100px; background-color: #3498db; color: white;
+                 display: flex; align-items: center; justify-content: center; border-radius: 5px; margin: 10px 0;">
+                我是一个盒子
+            </div>
+            <button onclick="changeColor()">改变颜色</button>
+            <button onclick="changeText()">改变文字</button>
+            <button onclick="changeSize()">改变大小</button>
+        </div>
+    </div>
+
+    <!-- ========== 9. 事件处理 ========== -->
+    <div class="section">
+        <h2>9. 事件处理</h2>
+        <div class="demo-box">
+            <button onmouseenter="showMessage('鼠标进入了！')"
+                    onmouseleave="showMessage('鼠标离开了！')">
+                悬停在我上面
+            </button>
+            <button onclick="showMessage('你点击了按钮！')">点击我</button>
+            <button ondblclick="showMessage('你双击了按钮！')">双击我</button>
+            <div class="output" id="output9"></div>
+        </div>
+    </div>
+
+    <!-- ========== 10. 定时器 ========== -->
+    <div class="section">
+        <h2>10. 定时器</h2>
+        <div class="demo-box">
+            <div id="counter" style="font-size: 24px; font-weight: bold; color: #3498db; margin: 10px 0;">0</div>
+            <button onclick="startCounter()">开始计数</button>
+            <button onclick="stopCounter()">停止计数</button>
+            <button onclick="resetCounter()">重置</button>
+        </div>
+    </div>
+
+    <!-- ========== 11. 数组方法 ========== -->
+    <div class="section">
+        <h2>11. 常用数组方法</h2>
+        <button onclick="runArrayMethodsDemo()">运行数组方法示例</button>
+        <div class="output" id="output11"></div>
+    </div>
+
+    <!-- ========== 12. ES6+ 新特性 ========== -->
+    <div class="section">
+        <h2>12. ES6+ 现代 JavaScript 特性</h2>
+        <button onclick="runES6Demo()">运行 ES6 示例</button>
+        <div class="output" id="output12"></div>
+    </div>
+
+    <!-- JavaScript 代码 -->
+    <script>
+        // ========== 1. 变量和数据类型 ==========
+        function runVariablesDemo() {
+            let output = '';
+
+            // 变量声明方式
+            var oldWay = '旧方式（不推荐）';
+            let newWay = '新方式（推荐）';
+            const constant = '常量（不可修改）';
+
+            output += '// 变量声明\n';
+            output += `let name = "张三";\n`;
+            output += `const age = 25;\n\n`;
+
+            // 数据类型
+            output += '// 数据类型\n';
+            let str = "字符串";         // String
+            let num = 42;               // Number
+            let bool = true;            // Boolean
+            let nothing = null;         // Null
+            let notDefined;             // Undefined
+            let arr = [1, 2, 3];       // Array
+            let obj = {name: "李四"};   // Object
+
+            output += `字符串: "${str}"\n`;
+            output += `数字: ${num}\n`;
+            output += `布尔值: ${bool}\n`;
+            output += `空值: ${nothing}\n`;
+            output += `未定义: ${notDefined}\n`;
+            output += `数组: [${arr}]\n`;
+            output += `对象: ${JSON.stringify(obj)}\n`;
+
+            document.getElementById('output1').innerText = output;
+            console.log('=== 变量和数据类型 ===');
+            console.log(output);
+        }
+
+        // ========== 2. 运算符 ==========
+        function calculate() {
+            const a = parseFloat(document.getElementById('num1').value);
+            const b = parseFloat(document.getElementById('num2').value);
+
+            let output = `数字1: ${a}, 数字2: ${b}\n\n`;
+            output += `加法: ${a} + ${b} = ${a + b}\n`;
+            output += `减法: ${a} - ${b} = ${a - b}\n`;
+            output += `乘法: ${a} × ${b} = ${a * b}\n`;
+            output += `除法: ${a} ÷ ${b} = ${a / b}\n`;
+            output += `取余: ${a} % ${b} = ${a % b}\n\n`;
+
+            output += `// 比较运算符\n`;
+            output += `${a} > ${b} = ${a > b}\n`;
+            output += `${a} < ${b} = ${a < b}\n`;
+            output += `${a} === ${b} = ${a === b}\n\n`;
+
+            output += `// 逻辑运算符\n`;
+            output += `true && false = ${true && false}\n`;
+            output += `true || false = ${true || false}\n`;
+            output += `!true = ${!true}\n`;
+
+            document.getElementById('output2').innerText = output;
+        }
+
+        // ========== 3. 条件语句 ==========
+        function checkAge() {
+            const age = parseInt(document.getElementById('age').value);
+            let output = '';
+
+            if (age < 0) {
+                output = '年龄不能为负数！';
+            } else if (age < 18) {
+                output = `你 ${age} 岁，还是未成年人。`;
+            } else if (age < 60) {
+                output = `你 ${age} 岁，是成年人。`;
+            } else {
+                output = `你 ${age} 岁，是老年人。`;
+            }
+
+            document.getElementById('output3').innerText = output;
+        }
+
+        // ========== 4. 循环 ==========
+        function runLoopDemo() {
+            let output = '';
+
+            // for 循环
+            output += '// for 循环\n';
+            for (let i = 1; i <= 5; i++) {
+                output += `第 ${i} 次循环\n`;
+            }
+
+            output += '\n// while 循环\n';
+            let count = 1;
+            while (count <= 3) {
+                output += `计数: ${count}\n`;
+                count++;
+            }
+
+            output += '\n// 遍历数组\n';
+            const fruits = ['苹果', '香蕉', '橙子'];
+            fruits.forEach((fruit, index) => {
+                output += `${index + 1}. ${fruit}\n`;
+            });
+
+            document.getElementById('output4').innerText = output;
+        }
+
+        // ========== 5. 数组 ==========
+        function runArrayDemo() {
+            let output = '';
+
+            // 创建数组
+            const numbers = [1, 2, 3, 4, 5];
+            output += `原始数组: [${numbers}]\n\n`;
+
+            // 数组操作
+            output += '// 数组操作\n';
+            numbers.push(6);  // 添加到末尾
+            output += `添加元素: [${numbers}]\n`;
+
+            numbers.pop();    // 删除最后一个
+            output += `删除最后一个: [${numbers}]\n`;
+
+            output += `数组长度: ${numbers.length}\n`;
+            output += `第一个元素: ${numbers[0]}\n`;
+            output += `最后一个元素: ${numbers[numbers.length - 1]}\n`;
+
+            document.getElementById('output5').innerText = output;
+        }
+
+        // ========== 6. 对象 ==========
+        function runObjectDemo() {
+            let output = '';
+
+            // 创建对象
+            const person = {
+                name: '张三',
+                age: 25,
+                city: '北京',
+                // 对象方法
+                introduce: function() {
+                    return `我叫${this.name}，今年${this.age}岁，来自${this.city}。`;
+                }
+            };
+
+            output += '// 对象\n';
+            output += `姓名: ${person.name}\n`;
+            output += `年龄: ${person.age}\n`;
+            output += `城市: ${person.city}\n`;
+            output += `\n自我介绍: ${person.introduce()}\n\n`;
+
+            // 修改属性
+            person.age = 26;
+            output += `修改年龄后: ${person.age}\n`;
+
+            // 添加新属性
+            person.job = '工程师';
+            output += `添加职业: ${person.job}\n`;
+
+            document.getElementById('output6').innerText = output;
+        }
+
+        // ========== 7. 函数 ==========
+        // 函数声明
+        function greet(name) {
+            return `你好，${name}！`;
+        }
+
+        // 箭头函数（ES6+）
+        const greetArrow = (name) => `你好，${name}！`;
+
+        function greetUser() {
+            const name = document.getElementById('username').value || '访客';
+            let output = '';
+
+            output += `普通函数: ${greet(name)}\n`;
+            output += `箭头函数: ${greetArrow(name)}\n\n`;
+
+            // 带默认参数的函数
+            function greetWithTime(name, time = '今天') {
+                return `${name}，${time}好！`;
+            }
+
+            output += `默认参数: ${greetWithTime(name)}\n`;
+            output += `传入参数: ${greetWithTime(name, '早上')}\n`;
+
+            document.getElementById('output7').innerText = output;
+        }
+
+        // ========== 8. DOM 操作 ==========
+        const colors = ['#3498db', '#e74c3c', '#2ecc71', '#f39c12', '#9b59b6'];
+        let colorIndex = 0;
+
+        function changeColor() {
+            const box = document.getElementById('box');
+            colorIndex = (colorIndex + 1) % colors.length;
+            box.style.backgroundColor = colors[colorIndex];
+        }
+
+        function changeText() {
+            const box = document.getElementById('box');
+            const texts = ['我是一个盒子', '盒子变了！', 'Hello Box!', '点击改变我', '继续点击'];
+            const currentText = box.innerText;
+            const currentIndex = texts.indexOf(currentText);
+            box.innerText = texts[(currentIndex + 1) % texts.length];
+        }
+
+        function changeSize() {
+            const box = document.getElementById('box');
+            const currentWidth = parseInt(box.style.width);
+            box.style.width = currentWidth === 200 ? '300px' : '200px';
+            box.style.height = currentWidth === 200 ? '150px' : '100px';
+        }
+
+        // ========== 9. 事件处理 ==========
+        function showMessage(msg) {
+            document.getElementById('output9').innerText = msg;
+        }
+
+        // ========== 10. 定时器 ==========
+        let counterValue = 0;
+        let counterInterval = null;
+
+        function startCounter() {
+            if (counterInterval) return; // 防止重复启动
+            counterInterval = setInterval(() => {
+                counterValue++;
+                document.getElementById('counter').innerText = counterValue;
+            }, 1000);
+        }
+
+        function stopCounter() {
+            clearInterval(counterInterval);
+            counterInterval = null;
+        }
+
+        function resetCounter() {
+            stopCounter();
+            counterValue = 0;
+            document.getElementById('counter').innerText = counterValue;
+        }
+
+        // ========== 11. 数组方法 ==========
+        function runArrayMethodsDemo() {
+            const numbers = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+            let output = `原始数组: [${numbers}]\n\n`;
+
+            // map - 映射转换
+            const doubled = numbers.map(num => num * 2);
+            output += `map (每个元素×2): [${doubled}]\n\n`;
+
+            // filter - 过滤
+            const evens = numbers.filter(num => num % 2 === 0);
+            output += `filter (偶数): [${evens}]\n\n`;
+
+            // reduce - 归纳
+            const sum = numbers.reduce((total, num) => total + num, 0);
+            output += `reduce (求和): ${sum}\n\n`;
+
+            // find - 查找
+            const found = numbers.find(num => num > 5);
+            output += `find (第一个>5): ${found}\n\n`;
+
+            // some & every
+            output += `some (是否有>5): ${numbers.some(num => num > 5)}\n`;
+            output += `every (是否都>0): ${numbers.every(num => num > 0)}\n`;
+
+            document.getElementById('output11').innerText = output;
+        }
+
+        // ========== 12. ES6+ 新特性 ==========
+        function runES6Demo() {
+            let output = '';
+
+            // 1. 模板字符串
+            const name = '张三';
+            const age = 25;
+            output += '// 1. 模板字符串\n';
+            output += `我叫${name}，今年${age}岁\n\n`;
+
+            // 2. 解构赋值
+            output += '// 2. 解构赋值\n';
+            const person = {name: '李四', age: 30, city: '上海'};
+            const {name: pName, city} = person;
+            output += `姓名: ${pName}, 城市: ${city}\n\n`;
+
+            const arr = [1, 2, 3];
+            const [first, second] = arr;
+            output += `数组解构: ${first}, ${second}\n\n`;
+
+            // 3. 展开运算符
+            output += '// 3. 展开运算符\n';
+            const arr1 = [1, 2, 3];
+            const arr2 = [4, 5, 6];
+            const combined = [...arr1, ...arr2];
+            output += `合并数组: [${combined}]\n\n`;
+
+            // 4. Promise (异步操作)
+            output += '// 4. Promise 异步操作\n';
+            output += '(查看控制台输出)\n\n';
+
+            // 模拟异步操作
+            new Promise((resolve) => {
+                setTimeout(() => {
+                    resolve('异步操作完成！');
+                }, 1000);
+            }).then(result => {
+                console.log(result);
+            });
+
+            // 5. 类 Class
+            output += '// 5. 类 Class\n';
+            class Animal {
+                constructor(name) {
+                    this.name = name;
+                }
+                speak() {
+                    return `${this.name} 发出声音`;
+                }
+            }
+
+            const dog = new Animal('狗');
+            output += dog.speak() + '\n';
+
+            document.getElementById('output12').innerText = output;
+        }
+
+        // 页面加载完成后的提示
+        window.onload = function() {
+            console.log('%c欢迎来到 JavaScript 学习！', 'color: #3498db; font-size: 20px; font-weight: bold;');
+            console.log('点击页面上的按钮运行各种示例');
+            console.log('这里会显示更多调试信息');
+        };
+    </script>
+
+    <!-- 学习小结 -->
+    <div class="section" style="background-color: #ecf0f1;">
+        <h2>JavaScript 学习小结</h2>
+        <ul>
+            <li><strong>基础语法</strong>: 变量(let/const)、数据类型、运算符</li>
+            <li><strong>控制结构</strong>: if/else、switch、for、while</li>
+            <li><strong>数据结构</strong>: 数组 Array、对象 Object</li>
+            <li><strong>函数</strong>: 函数声明、箭头函数、回调函数</li>
+            <li><strong>DOM 操作</strong>: 获取元素、修改属性、处理事件</li>
+            <li><strong>数组方法</strong>: map、filter、reduce、forEach</li>
+            <li><strong>ES6+</strong>: 模板字符串、解构、展开运算符、Promise、Class</li>
+            <li><strong>异步编程</strong>: setTimeout、Promise、async/await</li>
+        </ul>
+        <p style="color: #7f8c8d; margin-top: 15px;">
+            <strong>下一步学习建议</strong>:
+            尝试组合使用这些知识，创建交互式网页应用。学习 AJAX/Fetch 进行网络请求，
+            然后可以学习现代框架如 Vue.js、React 或 Angular。
+        </p>
+    </div>
+
+</body>
+</html>

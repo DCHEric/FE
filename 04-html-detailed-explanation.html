@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 深度讲解</title>
+    <style>
+        body {
+            font-family: Arial, "Microsoft YaHei", sans-serif;
+            line-height: 1.8;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
+        }
+        h1 {
+            color: #667eea;
+            text-align: center;
+            border-bottom: 3px solid #667eea;
+            padding-bottom: 15px;
+        }
+        h2 {
+            color: #764ba2;
+            margin-top: 30px;
+            background-color: #f0f0ff;
+            padding: 10px 15px;
+            border-left: 5px solid #667eea;
+        }
+        .concept {
+            background-color: #fff9e6;
+            border-left: 4px solid #ffd700;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        .example {
+            background-color: #f5f5f5;
+            padding: 15px;
+            border-radius: 5px;
+            margin: 15px 0;
+            font-family: 'Courier New', monospace;
+        }
+        .visual {
+            background-color: #e8f5e9;
+            border: 2px solid #4caf50;
+            padding: 20px;
+            margin: 15px 0;
+            border-radius: 8px;
+        }
+        .tips {
+            background-color: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 15px;
+            margin: 15px 0;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #667eea;
+            color: white;
+        }
+        tr:nth-child(even) {
+            background-color: #f9f9f9;
+        }
+        code {
+            background-color: #f0f0f0;
+            padding: 2px 6px;
+            border-radius: 3px;
+            color: #d63384;
+            font-family: 'Courier New', monospace;
+        }
+        .highlight {
+            background-color: yellow;
+            padding: 2px 5px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>🎓 HTML 基础知识深度讲解</h1>
+
+        <!-- ==================== 第一部分：HTML 文档结构 ==================== -->
+        <h2>📋 第一课：HTML 文档的基本结构</h2>
+
+        <div class="concept">
+            <h3>💡 核心概念</h3>
+            <p>每个 HTML 文档都像一本书，有固定的结构：</p>
+            <ul>
+                <li><strong>声明部分</strong>：告诉浏览器这是 HTML5 文档</li>
+                <li><strong>头部 (head)</strong>：包含页面的元信息（用户看不到）</li>
+                <li><strong>身体 (body)</strong>：包含页面的实际内容（用户能看到）</li>
+            </ul>
+        </div>
+
+        <div class="example">
+&lt;!DOCTYPE html&gt;              <span style="color: #888;">← 文档类型声明，必须是第一行</span>
+&lt;html lang="zh-CN"&gt;           <span style="color: #888;">← 根元素，lang 指定语言</span>
+&lt;head&gt;                        <span style="color: #888;">← 头部开始</span>
+    &lt;meta charset="UTF-8"&gt;    <span style="color: #888;">← 字符编码，支持中文</span>
+    &lt;title&gt;网页标题&lt;/title&gt;   <span style="color: #888;">← 浏览器标签页显示的标题</span>
+&lt;/head&gt;                       <span style="color: #888;">← 头部结束</span>
+&lt;body&gt;                        <span style="color: #888;">← 身体开始</span>
+    &lt;h1&gt;这是标题&lt;/h1&gt;        <span style="color: #888;">← 网页内容</span>
+    &lt;p&gt;这是段落&lt;/p&gt;          <span style="color: #888;">← 网页内容</span>
+&lt;/body&gt;                       <span style="color: #888;">← 身体结束</span>
+&lt;/html&gt;                       <span style="color: #888;">← 根元素结束</span>
+        </div>
+
+        <!-- ==================== 第二部分：标签的概念 ==================== -->
+        <h2>🏷️ 第二课：什么是标签？</h2>
+
+        <div class="concept">
+            <h3>💡 标签的组成</h3>
+            <p>HTML 使用<strong>标签 (Tags)</strong>来标记内容。大多数标签成对出现：</p>
+        </div>
+
+        <div class="visual">
+            <h3>标签的解剖：</h3>
+            <pre style="font-size: 18px; line-height: 2;">
+<span style="color: red; font-weight: bold;">&lt;p&gt;</span><span style="color: blue;">这是段落内容</span><span style="color: red; font-weight: bold;">&lt;/p&gt;</span>
+ ↑                    ↑
+开始标签           结束标签
+(有 &lt; &gt;)        (有 &lt;/ &gt;)
+            </pre>
+
+            <h4>标签的三种形式：</h4>
+            <ol>
+                <li><strong>双标签（成对）</strong>：<code>&lt;p&gt;内容&lt;/p&gt;</code> - 有开始和结束</li>
+                <li><strong>单标签（自闭合）</strong>：<code>&lt;br&gt;</code> 或 <code>&lt;img /&gt;</code> - 只有一个标签</li>
+                <li><strong>带属性的标签</strong>：<code>&lt;a href="网址"&gt;链接&lt;/a&gt;</code> - 标签可以有属性</li>
+            </ol>
+        </div>
+
+        <!-- ==================== 第三部分：常用标签详解 ==================== -->
+        <h2>📝 第三课：常用标签详解</h2>
+
+        <h3>1️⃣ 标题标签 (h1-h6)</h3>
+        <div class="visual">
+            <p><strong>作用</strong>：定义标题，从 h1 到 h6，重要性递减</p>
+            <h1 style="margin: 5px 0;">h1 - 最重要的标题（每页只用一次）</h1>
+            <h2 style="margin: 5px 0;">h2 - 二级标题</h2>
+            <h3 style="margin: 5px 0;">h3 - 三级标题</h3>
+            <h4 style="margin: 5px 0;">h4 - 四级标题</h4>
+            <h5 style="margin: 5px 0;">h5 - 五级标题</h5>
+            <h6 style="margin: 5px 0;">h6 - 六级标题</h6>
+        </div>
+
+        <div class="example">
+&lt;h1&gt;网站的主标题&lt;/h1&gt;
+&lt;h2&gt;章节标题&lt;/h2&gt;
+&lt;h3&gt;小节标题&lt;/h3&gt;
+        </div>
+
+        <div class="tips">
+            <strong>💡 使用技巧：</strong>
+            <ul>
+                <li>h1 最重要，通常每页只有一个（比如网站名称或文章标题）</li>
+                <li>按层级使用，不要跳级（不要从 h1 直接跳到 h3）</li>
+                <li>不要仅仅为了大字体而使用标题标签（用 CSS 控制样式）</li>
+            </ul>
+        </div>
+
+        <h3>2️⃣ 段落和文本标签</h3>
+        <table>
+            <tr>
+                <th>标签</th>
+                <th>作用</th>
+                <th>示例</th>
+                <th>效果</th>
+            </tr>
+            <tr>
+                <td><code>&lt;p&gt;</code></td>
+                <td>段落</td>
+                <td><code>&lt;p&gt;这是一段文字&lt;/p&gt;</code></td>
+                <td><p style="margin: 0;">这是一段文字</p></td>
+            </tr>
+            <tr>
+                <td><code>&lt;br&gt;</code></td>
+                <td>换行</td>
+                <td><code>第一行&lt;br&gt;第二行</code></td>
+                <td>第一行<br>第二行</td>
+            </tr>
+            <tr>
+                <td><code>&lt;strong&gt;</code></td>
+                <td>强调（粗体）</td>
+                <td><code>&lt;strong&gt;重要&lt;/strong&gt;</code></td>
+                <td><strong>重要</strong></td>
+            </tr>
+            <tr>
+                <td><code>&lt;em&gt;</code></td>
+                <td>强调（斜体）</td>
+                <td><code>&lt;em&gt;强调&lt;/em&gt;</code></td>
+                <td><em>强调</em></td>
+            </tr>
+            <tr>
+                <td><code>&lt;mark&gt;</code></td>
+                <td>高亮</td>
+                <td><code>&lt;mark&gt;标记&lt;/mark&gt;</code></td>
+                <td><mark>标记</mark></td>
+            </tr>
+            <tr>
+                <td><code>&lt;small&gt;</code></td>
+                <td>小字</td>
+                <td><code>&lt;small&gt;小字&lt;/small&gt;</code></td>
+                <td><small>小字</small></td>
+            </tr>
+        </table>
+
+        <h3>3️⃣ 链接标签 &lt;a&gt;</h3>
+        <div class="concept">
+            <p><strong>作用</strong>：创建超链接，让用户可以跳转到其他页面</p>
+        </div>
+
+        <div class="example">
+&lt;!-- 基本链接 --&gt;
+&lt;a href="https://www.baidu.com"&gt;去百度&lt;/a&gt;
+
+&lt;!-- 新窗口打开 --&gt;
+&lt;a href="https://www.baidu.com" target="_blank"&gt;在新窗口打开百度&lt;/a&gt;
+
+&lt;!-- 链接到页面中的某个位置 --&gt;
+&lt;a href="#section1"&gt;跳转到第一节&lt;/a&gt;
+
+&lt;!-- 邮件链接 --&gt;
+&lt;a href="mailto:example@email.com"&gt;发送邮件&lt;/a&gt;
+        </div>
+
+        <div class="visual">
+            <h4>链接示例：</h4>
+            <p><a href="https://developer.mozilla.org" target="_blank">MDN Web 文档（新窗口）</a></p>
+            <p><a href="#top">返回页面顶部</a></p>
+        </div>
+
+        <h3>4️⃣ 图片标签 &lt;img&gt;</h3>
+        <div class="concept">
+            <p><strong>作用</strong>：在网页中显示图片（单标签）</p>
+        </div>
+
+        <div class="example">
+&lt;img src="图片路径" alt="图片描述" width="宽度" height="高度"&gt;
+
+&lt;!-- 实际例子 --&gt;
+&lt;img src="logo.png" alt="公司Logo" width="200"&gt;
+        </div>
+
+        <div class="tips">
+            <strong>💡 重要属性：</strong>
+            <ul>
+                <li><code>src</code>（必需）：图片的路径（URL 或本地路径）</li>
+                <li><code>alt</code>（必需）：图片的替代文字，当图片无法显示时显示这段文字</li>
+                <li><code>width/height</code>（可选）：设置图片宽高</li>
+            </ul>
+        </div>
+
+        <h3>5️⃣ 列表标签</h3>
+        <div class="visual">
+            <div style="display: flex; gap: 30px;">
+                <div style="flex: 1;">
+                    <h4>无序列表 (ul)</h4>
+                    <div class="example" style="font-size: 14px;">
+&lt;ul&gt;
+  &lt;li&gt;苹果&lt;/li&gt;
+  &lt;li&gt;香蕉&lt;/li&gt;
+  &lt;li&gt;橙子&lt;/li&gt;
+&lt;/ul&gt;
+                    </div>
+                    <p><strong>效果：</strong></p>
+                    <ul>
+                        <li>苹果</li>
+                        <li>香蕉</li>
+                        <li>橙子</li>
+                    </ul>
+                </div>
+
+                <div style="flex: 1;">
+                    <h4>有序列表 (ol)</h4>
+                    <div class="example" style="font-size: 14px;">
+&lt;ol&gt;
+  &lt;li&gt;第一步&lt;/li&gt;
+  &lt;li&gt;第二步&lt;/li&gt;
+  &lt;li&gt;第三步&lt;/li&gt;
+&lt;/ol&gt;
+                    </div>
+                    <p><strong>效果：</strong></p>
+                    <ol>
+                        <li>第一步</li>
+                        <li>第二步</li>
+                        <li>第三步</li>
+                    </ol>
+                </div>
+            </div>
+        </div>
+
+        <h3>6️⃣ 容器标签：div 和 span</h3>
+        <div class="concept">
+            <p>这两个是最常用的<strong>容器标签</strong>，用于组织和布局内容：</p>
+        </div>
+
+        <table>
+            <tr>
+                <th>标签</th>
+                <th>类型</th>
+                <th>特点</th>
+                <th>用途</th>
+            </tr>
+            <tr>
+                <td><code>&lt;div&gt;</code></td>
+                <td>块级元素</td>
+                <td>独占一行</td>
+                <td>页面布局、分组内容</td>
+            </tr>
+            <tr>
+                <td><code>&lt;span&gt;</code></td>
+                <td>行内元素</td>
+                <td>不换行</td>
+                <td>修饰文本中的一部分</td>
+            </tr>
+        </table>
+
+        <div class="visual">
+            <h4>对比演示：</h4>
+            <div style="background: #e3f2fd; padding: 10px; margin: 5px 0;">
+                这是第一个 div（会独占一行）
+            </div>
+            <div style="background: #fff3e0; padding: 10px; margin: 5px 0;">
+                这是第二个 div（另起一行）
+            </div>
+
+            <p style="margin-top: 20px;">
+                这是段落文字，包含
+                <span style="background: #ffeb3b; padding: 2px 5px;">一个 span</span>
+                和
+                <span style="background: #80deea; padding: 2px 5px;">另一个 span</span>
+                ，它们不会换行。
+            </p>
+        </div>
+
+        <!-- ==================== 第四部分：语义化标签 ==================== -->
+        <h2>🎯 第四课：语义化标签 (HTML5)</h2>
+
+        <div class="concept">
+            <h3>💡 什么是语义化？</h3>
+            <p>语义化标签<strong>用标签名就能看出内容的含义</strong>，而不是所有地方都用 div。</p>
+            <p><strong>好处</strong>：</p>
+            <ul>
+                <li>✅ 代码更易读、易维护</li>
+                <li>✅ 有利于 SEO（搜索引擎优化）</li>
+                <li>✅ 辅助功能更好（帮助视障人士）</li>
+            </ul>
+        </div>
+
+        <div class="visual">
+            <h3>典型页面结构：</h3>
+            <div style="border: 2px solid #333; padding: 0; margin: 20px 0;">
+                <div style="background: #ffccbc; padding: 15px; text-align: center; font-weight: bold;">
+                    &lt;header&gt; - 页面头部（Logo、导航）
+                </div>
+                <div style="background: #c5cae9; padding: 15px; text-align: center; font-weight: bold;">
+                    &lt;nav&gt; - 导航栏
+                </div>
+                <div style="display: flex;">
+                    <div style="flex: 3; background: #dcedc8; padding: 15px;">
+                        <div style="text-align: center; font-weight: bold; margin-bottom: 10px;">
+                            &lt;main&gt; - 主要内容区
+                        </div>
+                        <div style="background: white; padding: 10px; margin: 5px 0;">
+                            &lt;article&gt; - 文章
+                        </div>
+                        <div style="background: white; padding: 10px; margin: 5px 0;">
+                            &lt;section&gt; - 章节
+                        </div>
+                    </div>
+                    <div style="flex: 1; background: #fff9c4; padding: 15px; text-align: center; font-weight: bold;">
+                        &lt;aside&gt;<br>侧边栏
+                    </div>
+                </div>
+                <div style="background: #b0bec5; padding: 15px; text-align: center; font-weight: bold;">
+                    &lt;footer&gt; - 页面底部（版权、链接）
+                </div>
+            </div>
+        </div>
+
+        <table>
+            <tr>
+                <th>标签</th>
+                <th>含义</th>
+                <th>适用场景</th>
+            </tr>
+            <tr>
+                <td><code>&lt;header&gt;</code></td>
+                <td>头部区域</td>
+                <td>网站头部、文章标题区</td>
+            </tr>
+            <tr>
+                <td><code>&lt;nav&gt;</code></td>
+                <td>导航链接区</td>
+                <td>菜单、面包屑导航</td>
+            </tr>
+            <tr>
+                <td><code>&lt;main&gt;</code></td>
+                <td>主要内容</td>
+                <td>页面的主体内容（每页只用一次）</td>
+            </tr>
+            <tr>
+                <td><code>&lt;article&gt;</code></td>
+                <td>独立文章</td>
+                <td>博客文章、新闻报道</td>
+            </tr>
+            <tr>
+                <td><code>&lt;section&gt;</code></td>
+                <td>章节/区块</td>
+                <td>内容分组、主题分区</td>
+            </tr>
+            <tr>
+                <td><code>&lt;aside&gt;</code></td>
+                <td>侧边内容</td>
+                <td>侧边栏、相关链接</td>
+            </tr>
+            <tr>
+                <td><code>&lt;footer&gt;</code></td>
+                <td>底部区域</td>
+                <td>版权信息、联系方式</td>
+            </tr>
+        </table>
+
+        <!-- ==================== 第五部分：表单 ==================== -->
+        <h2>📋 第五课：表单元素</h2>
+
+        <div class="concept">
+            <p><strong>表单用于收集用户输入</strong>，如登录、注册、搜索等。</p>
+        </div>
+
+        <div class="visual">
+            <h3>常用表单元素：</h3>
+
+            <form style="background: white; padding: 20px; border: 1px solid #ddd; border-radius: 5px;">
+                <div style="margin: 15px 0;">
+                    <label for="text-input"><strong>文本输入框：</strong></label><br>
+                    <input type="text" id="text-input" placeholder="请输入文字" style="width: 100%; padding: 8px; margin-top: 5px;">
+                    <small>代码：<code>&lt;input type="text"&gt;</code></small>
+                </div>
+
+                <div style="margin: 15px 0;">
+                    <label for="password-input"><strong>密码输入框：</strong></label><br>
+                    <input type="password" id="password-input" placeholder="请输入密码" style="width: 100%; padding: 8px; margin-top: 5px;">
+                    <small>代码：<code>&lt;input type="password"&gt;</code></small>
+                </div>
+
+                <div style="margin: 15px 0;">
+                    <label for="email-input"><strong>邮箱输入框：</strong></label><br>
+                    <input type="email" id="email-input" placeholder="example@email.com" style="width: 100%; padding: 8px; margin-top: 5px;">
+                    <small>代码：<code>&lt;input type="email"&gt;</code>（会自动验证格式）</small>
+                </div>
+
+                <div style="margin: 15px 0;">
+                    <strong>单选按钮（只能选一个）：</strong><br>
+                    <input type="radio" id="male" name="gender" value="male">
+                    <label for="male">男</label>
+                    <input type="radio" id="female" name="gender" value="female">
+                    <label for="female">女</label><br>
+                    <small>代码：<code>&lt;input type="radio" name="gender"&gt;</code>（相同 name 实现互斥）</small>
+                </div>
+
+                <div style="margin: 15px 0;">
+                    <strong>复选框（可以选多个）：</strong><br>
+                    <input type="checkbox" id="cb1" name="hobby" value="reading">
+                    <label for="cb1">阅读</label>
+                    <input type="checkbox" id="cb2" name="hobby" value="sports">
+                    <label for="cb2">运动</label>
+                    <input type="checkbox" id="cb3" name="hobby" value="music">
+                    <label for="cb3">音乐</label><br>
+                    <small>代码：<code>&lt;input type="checkbox"&gt;</code></small>
+                </div>
+
+                <div style="margin: 15px 0;">
+                    <label for="select-demo"><strong>下拉选择框：</strong></label><br>
+                    <select id="select-demo" style="width: 100%; padding: 8px; margin-top: 5px;">
+                        <option value="">请选择城市</option>
+                        <option value="beijing">北京</option>
+                        <option value="shanghai">上海</option>
+                        <option value="guangzhou">广州</option>
+                    </select><br>
+                    <small>代码：<code>&lt;select&gt;&lt;option&gt;...&lt;/option&gt;&lt;/select&gt;</code></small>
+                </div>
+
+                <div style="margin: 15px 0;">
+                    <label for="textarea-demo"><strong>多行文本框：</strong></label><br>
+                    <textarea id="textarea-demo" rows="4" style="width: 100%; padding: 8px; margin-top: 5px;" placeholder="请输入多行文字..."></textarea><br>
+                    <small>代码：<code>&lt;textarea rows="4"&gt;&lt;/textarea&gt;</code></small>
+                </div>
+
+                <div style="margin: 15px 0;">
+                    <button type="submit" style="background: #667eea; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer;">提交</button>
+                    <button type="reset" style="background: #999; color: white; padding: 10px 20px; border: none; border-radius: 5px; cursor: pointer; margin-left: 10px;">重置</button>
+                </div>
+            </form>
+        </div>
+
+        <!-- ==================== 第六部分：表格 ==================== -->
+        <h2>📊 第六课：表格</h2>
+
+        <div class="concept">
+            <p><strong>表格用于展示结构化的数据</strong>，由行和列组成。</p>
+        </div>
+
+        <div class="example">
+&lt;table&gt;
+  &lt;thead&gt;                    <span style="color: #888;">← 表头</span>
+    &lt;tr&gt;                     <span style="color: #888;">← 行</span>
+      &lt;th&gt;姓名&lt;/th&gt;          <span style="color: #888;">← 表头单元格</span>
+      &lt;th&gt;年龄&lt;/th&gt;
+    &lt;/tr&gt;
+  &lt;/thead&gt;
+  &lt;tbody&gt;                   <span style="color: #888;">← 表格主体</span>
+    &lt;tr&gt;
+      &lt;td&gt;张三&lt;/td&gt;          <span style="color: #888;">← 普通单元格</span>
+      &lt;td&gt;25&lt;/td&gt;
+    &lt;/tr&gt;
+  &lt;/tbody&gt;
+&lt;/table&gt;
+        </div>
+
+        <div class="visual">
+            <h3>表格示例：</h3>
+            <table>
+                <thead>
+                    <tr>
+                        <th>学号</th>
+                        <th>姓名</th>
+                        <th>成绩</th>
+                        <th>等级</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>001</td>
+                        <td>张三</td>
+                        <td>95</td>
+                        <td>优秀</td>
+                    </tr>
+                    <tr>
+                        <td>002</td>
+                        <td>李四</td>
+                        <td>88</td>
+                        <td>良好</td>
+                    </tr>
+                    <tr>
+                        <td>003</td>
+                        <td>王五</td>
+                        <td>76</td>
+                        <td>中等</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+
+        <!-- ==================== 总结 ==================== -->
+        <h2>🎯 知识点总结</h2>
+
+        <div style="background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); color: white; padding: 25px; border-radius: 10px; margin: 20px 0;">
+            <h3 style="color: white; margin-top: 0;">HTML 学习清单 ✓</h3>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-top: 20px;">
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px;">
+                    <h4 style="margin-top: 0;">基础概念</h4>
+                    <ul style="margin: 0;">
+                        <li>✓ HTML 文档结构</li>
+                        <li>✓ 标签的概念和分类</li>
+                        <li>✓ 元素和属性</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px;">
+                    <h4 style="margin-top: 0;">文本内容</h4>
+                    <ul style="margin: 0;">
+                        <li>✓ 标题 (h1-h6)</li>
+                        <li>✓ 段落 (p)</li>
+                        <li>✓ 文本格式化</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px;">
+                    <h4 style="margin-top: 0;">链接和媒体</h4>
+                    <ul style="margin: 0;">
+                        <li>✓ 超链接 (a)</li>
+                        <li>✓ 图片 (img)</li>
+                        <li>✓ 音频和视频</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px;">
+                    <h4 style="margin-top: 0;">列表和表格</h4>
+                    <ul style="margin: 0;">
+                        <li>✓ 有序列表 (ol)</li>
+                        <li>✓ 无序列表 (ul)</li>
+                        <li>✓ 表格 (table)</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px;">
+                    <h4 style="margin-top: 0;">表单元素</h4>
+                    <ul style="margin: 0;">
+                        <li>✓ 输入框 (input)</li>
+                        <li>✓ 按钮 (button)</li>
+                        <li>✓ 选择和文本域</li>
+                    </ul>
+                </div>
+
+                <div style="background: rgba(255,255,255,0.2); padding: 15px; border-radius: 5px;">
+                    <h4 style="margin-top: 0;">语义化标签</h4>
+                    <ul style="margin: 0;">
+                        <li>✓ header, nav, main</li>
+                        <li>✓ article, section</li>
+                        <li>✓ aside, footer</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="tips">
+            <h3>🚀 学习建议</h3>
+            <ol>
+                <li><strong>动手实践</strong>：学完每个标签后，尝试自己写一遍</li>
+                <li><strong>观察网页</strong>：用浏览器开发者工具（F12）查看其他网站的 HTML 结构</li>
+                <li><strong>做小项目</strong>：尝试制作个人简历页面、博客文章页等</li>
+                <li><strong>循序渐进</strong>：掌握 HTML 后，学习 CSS 美化页面，再学 JavaScript 添加交互</li>
+            </ol>
+        </div>
+
+        <div style="text-align: center; margin-top: 40px; padding: 30px; background: #f9f9f9; border-radius: 10px;">
+            <h2 style="color: #667eea;">🎉 恭喜你完成 HTML 基础学习！</h2>
+            <p style="font-size: 18px; color: #666;">
+                现在你已经掌握了网页的"骨架"<br>
+                下一步：学习 CSS 让网页变得美观！
+            </p>
+        </div>
+    </div>
+
+    <script>
+        // 控制台输出学习提示
+        console.log('%c🎓 HTML 学习提示', 'color: #667eea; font-size: 20px; font-weight: bold;');
+        console.log('1. 使用 F12 打开开发者工具');
+        console.log('2. 在 Elements 标签页查看页面结构');
+        console.log('3. 尝试右键点击元素选择"检查"');
+        console.log('4. 修改 HTML 代码，观察页面变化');
+    </script>
+</body>
+</html>

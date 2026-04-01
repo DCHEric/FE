@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>外部样式表演示</title>
+
+    <!-- ==================== 引入外部 CSS 文件 ==================== -->
+    <!-- 这就是外部样式表的使用方式！ -->
+    <link rel="stylesheet" href="external-style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <h1>🎨 外部样式表演示页面</h1>
+            <p>这个页面的所有样式都来自外部 CSS 文件：external-style.css</p>
+        </header>
+
+        <!-- 导航栏 -->
+        <nav class="nav">
+            <ul>
+                <li><a href="#home">首页</a></li>
+                <li><a href="#about">关于</a></li>
+                <li><a href="#services">服务</a></li>
+                <li><a href="#contact">联系</a></li>
+            </ul>
+        </nav>
+
+        <!-- 主要内容 -->
+        <main>
+            <div class="card">
+                <h2>什么是外部样式表？</h2>
+                <p>
+                    外部样式表是将 CSS 代码写在独立的 <span class="highlight">.css 文件</span>中，
+                    然后通过 &lt;link&gt; 标签引入到 HTML 文件中。
+                </p>
+                <p>
+                    <strong>优点：</strong>
+                </p>
+                <ul>
+                    <li>✅ 样式和结构完全分离，代码更清晰</li>
+                    <li>✅ 一个 CSS 文件可以被多个 HTML 页面复用</li>
+                    <li>✅ 修改样式只需要改一个文件</li>
+                    <li>✅ 浏览器会缓存 CSS 文件，提高加载速度</li>
+                    <li>✅ 便于团队协作和维护</li>
+                </ul>
+            </div>
+
+            <div class="card">
+                <h2>如何使用外部样式表？</h2>
+                <p><strong>第1步：创建 CSS 文件</strong></p>
+                <pre style="background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto;">
+/* external-style.css */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f5f5f5;
+}
+
+.header {
+    background-color: #667eea;
+    color: white;
+    padding: 30px;
+}
+                </pre>
+
+                <p><strong>第2步：在 HTML 中引入</strong></p>
+                <pre style="background: #f4f4f4; padding: 15px; border-radius: 5px; overflow-x: auto;">
+&lt;head&gt;
+    &lt;link rel="stylesheet" href="external-style.css"&gt;
+&lt;/head&gt;
+                </pre>
+
+                <p class="text-center mt-20">
+                    <button class="btn">查看 external-style.css 源文件</button>
+                </p>
+            </div>
+
+            <div class="card">
+                <h2>样式效果演示</h2>
+                <p>本页面的所有样式（头部、导航、卡片、按钮等）都定义在 <code>external-style.css</code> 文件中。</p>
+                <p>尝试以下操作：</p>
+                <ol>
+                    <li>在编辑器中打开 <code>external-style.css</code></li>
+                    <li>修改某个样式（比如 .header 的背景色）</li>
+                    <li>刷新浏览器，查看效果</li>
+                    <li>你会发现修改非常方便！</li>
+                </ol>
+
+                <div class="text-center mt-20">
+                    <a href="#" class="btn">了解更多</a>
+                    <a href="#" class="btn">立即体验</a>
+                </div>
+            </div>
+
+            <div class="card">
+                <h2>💡 最佳实践</h2>
+                <ul>
+                    <li>✓ 将所有样式放在外部 CSS 文件中</li>
+                    <li>✓ 使用有意义的类名（如 .header, .nav, .card）</li>
+                    <li>✓ 按功能模块组织 CSS 代码</li>
+                    <li>✓ 添加注释说明样式的用途</li>
+                    <li>✓ 大型项目可以分多个 CSS 文件（header.css, footer.css）</li>
+                </ul>
+            </div>
+        </main>
+
+        <!-- 底部 -->
+        <footer class="footer">
+            <p>© 2024 前端学习教程</p>
+            <p>所有样式由 <a href="external-style.css">external-style.css</a> 提供</p>
+        </footer>
+    </div>
+
+    <script>
+        console.log('%c外部样式表示例', 'color: #667eea; font-size: 20px; font-weight: bold;');
+        console.log('本页面使用了外部 CSS 文件：external-style.css');
+        console.log('尝试修改 CSS 文件中的样式，然后刷新页面查看效果！');
+    </script>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HTML 基础知识</title>
+</head>
+<body>
+    <!-- HTML（HyperText Markup Language）是网页的骨架 -->
+    <!-- 它使用标签来定义内容的结构和含义 -->
+
+    <!-- 1. 标题标签 - 从h1到h6，h1最重要 -->
+    <h1>这是一级标题</h1>
+    <h2>这是二级标题</h2>
+    <h3>这是三级标题</h3>
+
+    <!-- 2. 段落标签 -->
+    <p>这是一个段落。段落用于组织文本内容。</p>
+    <p>HTML使用标签来标记内容。标签通常成对出现，有开始标签和结束标签。</p>
+
+    <!-- 3. 文本格式化 -->
+    <p>
+        <strong>这是粗体文字（强调）</strong><br>
+        <em>这是斜体文字（强调）</em><br>
+        <u>这是下划线文字</u><br>
+        <mark>这是高亮文字</mark>
+    </p>
+
+    <!-- 4. 列表 -->
+    <h2>无序列表（项目符号）</h2>
+    <ul>
+        <li>HTML - 结构</li>
+        <li>CSS - 样式</li>
+        <li>JavaScript - 交互</li>
+    </ul>
+
+    <h2>有序列表（数字）</h2>
+    <ol>
+        <li>学习HTML</li>
+        <li>学习CSS</li>
+        <li>学习JavaScript</li>
+    </ol>
+
+    <!-- 5. 链接 -->
+    <h2>链接</h2>
+    <a href="https://developer.mozilla.org" target="_blank">MDN Web文档（新窗口打开）</a>
+
+    <!-- 6. 图片 -->
+    <h2>图片</h2>
+    <img src="https://via.placeholder.com/300x200" alt="示例图片" width="300">
+    <p><small>alt属性：当图片无法显示时的替代文字</small></p>
+
+    <!-- 7. 容器标签 - 用于布局和分组 -->
+    <h2>容器元素</h2>
+    <div style="border: 2px solid blue; padding: 10px; margin: 10px 0;">
+        <p><strong>div</strong> 是块级容器，独占一行</p>
+    </div>
+
+    <p>
+        这是一个段落，包含一个
+        <span style="color: red; font-weight: bold;">span元素</span>
+        ，span是行内容器，不会换行。
+    </p>
+
+    <!-- 8. 表格 -->
+    <h2>表格</h2>
+    <table border="1" style="border-collapse: collapse;">
+        <thead>
+            <tr>
+                <th>技术</th>
+                <th>用途</th>
+                <th>难度</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td>HTML</td>
+                <td>网页结构</td>
+                <td>⭐</td>
+            </tr>
+            <tr>
+                <td>CSS</td>
+                <td>网页样式</td>
+                <td>⭐⭐</td>
+            </tr>
+            <tr>
+                <td>JavaScript</td>
+                <td>网页交互</td>
+                <td>⭐⭐⭐</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <!-- 9. 表单元素 -->
+    <h2>表单</h2>
+    <form>
+        <label for="username">用户名：</label>
+        <input type="text" id="username" name="username" placeholder="请输入用户名"><br><br>
+
+        <label for="password">密码：</label>
+        <input type="password" id="password" name="password"><br><br>
+
+        <label for="email">邮箱：</label>
+        <input type="email" id="email" name="email"><br><br>
+
+        <label>性别：</label>
+        <input type="radio" id="male" name="gender" value="male">
+        <label for="male">男</label>
+        <input type="radio" id="female" name="gender" value="female">
+        <label for="female">女</label><br><br>
+
+        <label>爱好：</label>
+        <input type="checkbox" id="coding" name="hobby" value="coding">
+        <label for="coding">编程</label>
+        <input type="checkbox" id="reading" name="hobby" value="reading">
+        <label for="reading">阅读</label><br><br>
+
+        <label for="country">国家：</label>
+        <select id="country" name="country">
+            <option value="cn">中国</option>
+            <option value="us">美国</option>
+            <option value="uk">英国</option>
+        </select><br><br>
+
+        <label for="message">留言：</label><br>
+        <textarea id="message" name="message" rows="4" cols="50"></textarea><br><br>
+
+        <button type="submit">提交</button>
+        <button type="reset">重置</button>
+    </form>
+
+    <!-- 10. 语义化标签（HTML5） -->
+    <hr>
+    <h2>语义化标签</h2>
+
+    <header style="background-color: #f0f0f0; padding: 10px;">
+        <h3>页面头部 - header标签</h3>
+    </header>
+
+    <nav style="background-color: #e0e0e0; padding: 10px; margin: 10px 0;">
+        <strong>导航栏 - nav标签</strong>
+        <ul style="list-style: none; padding: 0;">
+            <li style="display: inline; margin-right: 10px;">首页</li>
+            <li style="display: inline; margin-right: 10px;">关于</li>
+            <li style="display: inline; margin-right: 10px;">联系</li>
+        </ul>
+    </nav>
+
+    <main>
+        <article style="border: 1px solid #ccc; padding: 10px; margin: 10px 0;">
+            <h3>文章 - article标签</h3>
+            <p>article用于独立的内容，如博客文章、新闻报道等。</p>
+        </article>
+
+        <section style="border: 1px solid #ddd; padding: 10px; margin: 10px 0;">
+            <h3>章节 - section标签</h3>
+            <p>section用于对内容进行主题分组。</p>
+        </section>
+
+        <aside style="background-color: #fffacd; padding: 10px; margin: 10px 0;">
+            <h4>侧边栏 - aside标签</h4>
+            <p>aside用于与主要内容相关但可以独立的内容。</p>
+        </aside>
+    </main>
+
+    <footer style="background-color: #333; color: white; padding: 10px; margin-top: 20px;">
+        <p>页面底部 - footer标签</p>
+        <p>© 2024 前端学习</p>
+    </footer>
+
+</body>
+</html>
