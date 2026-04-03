@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>没有 Vue 的响应式实现</title>
+</head>
+<body>
+    <h2>方法 1: 手动操作 DOM</h2>
+    <div id="box1">
+        <p id="title1"></p>
+        <p id="content1"></p>
+    </div>
+    <button onclick="updateMethod1()">更新数据</button>
+
+    <hr>
+
+    <h2>方法 2: 使用 Proxy (Vue 3 原理)</h2>
+    <div id="box2">
+        <p id="title"></p>
+        <p id="content"></p>
+    </div>
+    <button onclick="updateMethod2()">更新数据</button>
+
+    <script>
+        // ========== 方法 1: 完全手动 ==========
+        let title1 = "初始标题";
+        let content1 = "初始内容";
+
+        // 手动更新 DOM
+        function render1() {
+            document.getElementById("title1").innerText = title1;
+            document.getElementById("content1").innerText = content1;
+        }
+
+        render1(); // 初始渲染
+
+        function updateMethod1() {
+            title1 = "手动更新后的标题 " + Date.now();
+            content1 = "手动更新后的内容";
+            render1(); // 必须手动调用渲染函数
+        }
+
+        // ========== 方法 2: Proxy 实现响应式 (Vue 3 原理) ==========
+        let data = {
+            title: "初始标题",
+            content: "初始内容"
+        };
+
+        // 创建响应式代理
+        const reactiveData = new Proxy(data, {
+            set(target, key, value) {
+                console.log(`数据变化: ${key} = ${value}`);
+                target[key] = value;
+
+                // 自动更新对应的 DOM
+                const el = document.getElementById(key);
+                if (el) {
+                    el.innerText = value;
+                }
+                return true;
+            }
+        });
+
+        // 初始渲染
+        document.getElementById("title").innerText = reactiveData.title;
+        document.getElementById("content").innerText = reactiveData.content;
+
+        function updateMethod2() {
+            // 直接修改数据，DOM 自动更新！
+            reactiveData.title = "Proxy 自动更新的标题 " + Date.now();
+            reactiveData.content = "Proxy 自动更新的内容";
+        }
+    </script>
+</body>
+</html>

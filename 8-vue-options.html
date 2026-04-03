@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vue 2 选项示例</title>
+</head>
+<body>
+    <div id="box">
+        <h2>1. data 和 methods</h2>
+        <p>计数: {{ count }}</p>
+        <button @click="increment">增加</button>
+        <button @click="reset">重置</button>
+
+        <hr>
+
+        <h2>2. computed 计算属性</h2>
+        <p>名: <input v-model="firstName"></p>
+        <p>姓: <input v-model="lastName"></p>
+        <p>全名: {{ fullName }}</p>
+
+        <hr>
+
+        <h2>3. watch 监听器</h2>
+        <p>问题: <input v-model="question" placeholder="输入问题"></p>
+        <p>{{ answer }}</p>
+
+        <hr>
+
+        <h2>4. filters 过滤器</h2>
+        <p>原始价格: {{ price }}</p>
+        <p>格式化价格: {{ price | currency }}</p>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+    <script>
+        const vm = new Vue({
+            el: "#box",
+
+            // 1. 数据
+            data: {
+                count: 0,
+                firstName: "张",
+                lastName: "三",
+                question: "",
+                answer: "输入问题试试...",
+                price: 99.9
+            },
+
+            // 2. 方法
+            methods: {
+                increment() {
+                    this.count++;
+                },
+                reset() {
+                    this.count = 0;
+                }
+            },
+
+            // 3. 计算属性
+            computed: {
+                fullName() {
+                    return this.firstName + this.lastName;
+                }
+            },
+
+            // 4. 监听器
+            watch: {
+                question(newQuestion) {
+                    if (newQuestion.length > 0) {
+                        this.answer = '你问了: "' + newQuestion + '"';
+                    } else {
+                        this.answer = '输入问题试试...';
+                    }
+                }
+            },
+
+            // 5. 过滤器
+            filters: {
+                currency(value) {
+                    return '¥' + value.toFixed(2);
+                }
+            },
+
+            // 6. 生命周期钩子
+            created() {
+                console.log('✅ created: Vue 实例创建完成');
+            },
+
+            mounted() {
+                console.log('✅ mounted: DOM 已挂载');
+                console.log('可以访问 vm 实例:', this);
+            },
+
+            updated() {
+                console.log('🔄 updated: 数据更新了');
+            }
+        });
+
+        // 在控制台可以访问 vm 实例
+        console.log('Vue 实例:', vm);
+        console.log('访问 data:', vm.count);
+        console.log('调用 method:', vm.increment);
+    </script>
+</body>
+</html>
