@@ -1,0 +1,23 @@
+# Node.js 学习项目相关文件
+node_modules/
+package-lock.json
+
+# 测试文件和临时文件
+test-files/
+stream-test/
+*.log
+
+# 操作系统文件
+.DS_Store
+Thumbs.db
+
+# IDE 文件
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# 临时文件
+tmp/
+temp/
+*.tmp
